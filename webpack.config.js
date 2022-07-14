@@ -30,13 +30,19 @@ module.exports = (env, options) => {
             'sass-loader',
           ],
         },
+        {
+          test: /\.svg$/i,
+          // include: [path.join(__dirname, 'src')],
+          issuer: /\.[jt]sx?$/,
+          use: ['@svgr/webpack'],
+        },
       ],
     },
     resolve: { extensions: ['.tsx', '.ts', '.js'] },
     output: {
       filename: 'main.bundle.js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: "",
+      publicPath: '',
     },
     plugins: [
       new HtmlWebpackPlugin({
